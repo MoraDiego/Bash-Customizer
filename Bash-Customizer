@@ -1,0 +1,59 @@
+#!/bin/bash
+if !(git --version); then
+	sudo apt-get install git
+fi
+if !(curl --version); then
+	sudo apt get install curl
+fi
+sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+cd ~
+echo "Seleccione un tema para su terminal"
+echo "1-90210"
+echo "2-agnoster"
+echo "3-axin"
+echo "4-bakke"
+echo "5-binaryanomaly"
+echo "6-bobby-python"
+echo "7-bobby"
+echo "8-brainy"
+echo "9-brunton"
+read nuevoTema
+temaActual="font"
+case nuevoTema in
+	1)
+		sed -i 's/OSH_THEME="font"/OSH_THEME="90210"/g' ~/.bashrc
+		source .bashrc
+		;;
+	2)
+		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
+                source .bashrc
+		;;
+	3)
+		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
+                source .bashrc
+		;;
+	4)
+		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
+                source .bashrc
+		;;
+	5)
+		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
+                source .bashrc
+		;;
+	6)
+		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
+                source .bashrc
+		;;
+	7)
+		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
+                source .bashrc
+		;;
+	8)
+		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
+                source .bashrc
+		;;
+	9)
+		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
+                source .bashrc
+		;;
+esac
