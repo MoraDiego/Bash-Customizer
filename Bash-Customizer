@@ -17,43 +17,44 @@ echo "6-bobby-python"
 echo "7-bobby"
 echo "8-brainy"
 echo "9-brunton"
-read nuevoTema
-temaActual="font"
-case nuevoTema in
-	1)
-		sed -i 's/OSH_THEME="font"/OSH_THEME="90210"/g' ~/.bashrc
-		source .bashrc
-		;;
-	2)
-		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
-                source .bashrc
-		;;
-	3)
-		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
-                source .bashrc
-		;;
-	4)
-		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
-                source .bashrc
-		;;
-	5)
-		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
-                source .bashrc
-		;;
-	6)
-		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
-                source .bashrc
-		;;
-	7)
-		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
-                source .bashrc
-		;;
-	8)
-		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
-                source .bashrc
-		;;
-	9)
-		sed -i 's/OSH_THEME="bobby"/OSH_THEME="font"/g' ~/.bashrc
-                source .bashrc
-		;;
-esac
+echo "10-salir"
+temaActual=$(grep OSH_THEME=* ~/.bashrc)
+echo $temaActual
+while true;
+	do
+		read nuevoTema
+		case $nuevoTema in
+			1)
+				sed -i 's/'$temaActual'/OSH_THEME="90210"/g' ~/.bashrc
+				;;
+			2)
+				sed -i 's/'$temaActual'/OSH_THEME="agnoster"/g' ~/.bashrc
+				;;
+			3)
+				sed -i 's/'$temaActual'/OSH_THEME="axin"/g' ~/.bashrc
+				;;
+			4)
+				sed -i 's/'$temaActual'/OSH_THEME="bakke"/g' ~/.bashrc
+		                source .bashrc
+				;;
+			5)
+				sed -i 's/'$temaActual'/OSH_THEME="binaryanomaly"/g' ~/.bashrc
+				;;
+			6)
+				sed -i 's/'$temaActual'/OSH_THEME="bobby-python"/g' ~/.bashrc
+				;;
+			7)
+				sed -i 's/'$temaActual'/OSH_THEME="bobby"/g' ~/.bashrc
+				;;
+			8)
+				sed -i 's/'$temaActual'/OSH_THEME="brainy"/g' ~/.bashr
+				;;
+			9)
+				sed -i 's/'$temaActual'/OSH_THEME="brunton"/g' ~/.bashrc
+				;;
+			10)
+				break
+				;;
+		esac
+	done
+. ~/.bashrc
