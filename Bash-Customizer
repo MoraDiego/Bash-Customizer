@@ -1,8 +1,8 @@
 #!/bin/bash
-if !(git --version); then
+if !(git --version) > /dev/null 2>&1; then
 	sudo apt-get install git
 fi
-if !(curl --version); then
+if !(curl --version) > /dev/null 2>&1; then
 	sudo apt get install curl
 fi
 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
@@ -17,7 +17,9 @@ echo "6-bobby-python"
 echo "7-bobby"
 echo "8-brainy"
 echo "9-brunton"
-echo "10-salir"
+echo "10-mostrar lista completa"
+echo "11-volver a la terminal por defecto y desinstalar oh my bash"
+echo "12-Salir"
 temaActual=$(grep OSH_THEME=* ~/.bashrc)
 echo $temaActual
 while true;
@@ -53,6 +55,17 @@ while true;
 				sed -i 's/'$temaActual'/OSH_THEME="brunton"/g' ~/.bashrc
 				;;
 			10)
+				cd ~/.oh-my-bash/themes
+				echo *>Lista.txt
+				sed -i 's/ /\n/g' Lista.txt
+				echo "LISTA DE TEMAS DISPONIBLES EN OH MY BASH"
+				cat Lista.txt
+				;;
+			11)
+				cd ~/.oh-my-bash/tools
+				./uninstall.sh
+				;;
+			12)
 				break
 				;;
 		esac
