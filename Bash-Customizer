@@ -1,9 +1,9 @@
 #!/bin/bash
 #Verificacion de recursos necesaios
-if !(git --version) > /dev/null 2>&1; then
+if ! git --version > /dev/null 2>&1; then
 	sudo apt-get install git
 fi
-if !(curl --version) > /dev/null 2>&1; then
+if ! curl --version > /dev/null 2>&1; then
 	sudo apt get install curl
 fi
 #Instalacion de Oh My Bash
