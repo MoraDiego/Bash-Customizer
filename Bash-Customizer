@@ -1,73 +1,77 @@
 #!/bin/bash
+#Verificacion de recursos necesaios
 if !(git --version) > /dev/null 2>&1; then
 	sudo apt-get install git
 fi
 if !(curl --version) > /dev/null 2>&1; then
 	sudo apt get install curl
 fi
+#Instalacion de Oh My Bash
+echo -e "Una vez instalado Oh My Bash ejecute de nuevo el script para personalizar su terminal \nSi ya esta instalado haga caso omiso"
 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-cd ~
-echo "Seleccione un tema para su terminal"
-echo "1-90210"
-echo "2-agnoster"
-echo "3-axin"
-echo "4-bakke"
-echo "5-binaryanomaly"
-echo "6-bobby-python"
-echo "7-bobby"
-echo "8-brainy"
-echo "9-brunton"
-echo "10-mostrar lista completa"
-echo "11-volver a la terminal por defecto y desinstalar oh my bash"
-echo "12-Salir"
-temaActual=$(grep OSH_THEME=* ~/.bashrc)
-echo $temaActual
-while true;
-	do
-		read nuevoTema
-		case $nuevoTema in
-			1)
-				sed -i 's/'$temaActual'/OSH_THEME="90210"/g' ~/.bashrc
-				;;
-			2)
-				sed -i 's/'$temaActual'/OSH_THEME="agnoster"/g' ~/.bashrc
-				;;
-			3)
-				sed -i 's/'$temaActual'/OSH_THEME="axin"/g' ~/.bashrc
-				;;
-			4)
-				sed -i 's/'$temaActual'/OSH_THEME="bakke"/g' ~/.bashrc
-		                source .bashrc
-				;;
-			5)
-				sed -i 's/'$temaActual'/OSH_THEME="binaryanomaly"/g' ~/.bashrc
-				;;
-			6)
-				sed -i 's/'$temaActual'/OSH_THEME="bobby-python"/g' ~/.bashrc
-				;;
-			7)
-				sed -i 's/'$temaActual'/OSH_THEME="bobby"/g' ~/.bashrc
-				;;
-			8)
-				sed -i 's/'$temaActual'/OSH_THEME="brainy"/g' ~/.bashr
-				;;
-			9)
-				sed -i 's/'$temaActual'/OSH_THEME="brunton"/g' ~/.bashrc
-				;;
-			10)
-				cd ~/.oh-my-bash/themes
-				echo *>Lista.txt
-				sed -i 's/ /\n/g' Lista.txt
-				echo "LISTA DE TEMAS DISPONIBLES EN OH MY BASH"
-				cat Lista.txt
-				;;
-			11)
-				cd ~/.oh-my-bash/tools
-				./uninstall.sh
-				;;
-			12)
-				break
-				;;
-		esac
-	done
-. ~/.bashrc
+#Menu de seleccion para personalziar la terminal
+	while true;
+		do
+			echo "Seleccione un tema para su terminal"
+			echo "1-90210"
+			echo "2-agnoster"
+			echo "3-axin"
+			echo "4-bakke"
+			echo "5-binaryanomaly"
+			echo "6-bobby-python"
+			echo "7-bobby"
+			echo "8-brainy"
+			echo "9-random"
+			echo "10-mostrar lista completa"
+			echo "11-volver a la terminal por defecto y desinstalar oh my bash"
+			echo "12-Salir"
+			temaActual=$(grep OSH_THEME=* ~/.bashrc)
+			read nuevoTema
+			case $nuevoTema in
+				1)
+					sed -i 's/'$temaActual'/OSH_THEME="90210"/g' ~/.bashrc
+					;;
+				2)
+					sed -i 's/'$temaActual'/OSH_THEME="agnoster"/g' ~/.bashrc
+					;;
+				3)
+					sed -i 's/'$temaActual'/OSH_THEME="axin"/g' ~/.bashrc
+					;;
+				4)
+					sed -i 's/'$temaActual'/OSH_THEME="bakke"/g' ~/.bashrc
+			                source .bashrc
+					;;
+				5)
+					sed -i 's/'$temaActual'/OSH_THEME="binaryanomaly"/g' ~/.bashrc
+					;;
+				6)
+					sed -i 's/'$temaActual'/OSH_THEME="bobby-python"/g' ~/.bashrc
+					;;
+				7)
+					sed -i 's/'$temaActual'/OSH_THEME="bobby"/g' ~/.bashrc
+					;;
+				8)
+					sed -i 's/'$temaActual'/OSH_THEME="brainy"/g' ~/.bashr
+					;;
+				9)
+					sed -i 's/'$temaActual'/OSH_THEME="random"/g' ~/.bashrc
+					;;
+				10)
+					cd ~/.oh-my-bash/themes
+					echo *>Lista.txt
+					sed -i 's/ /\n/g' Lista.txt
+					echo "LISTA DE TEMAS DISPONIBLES EN OH MY BASH"
+					cat Lista.txt
+					echo "Escriba el nombre del tea que quiera usar"
+					read nuevoTema
+					sed -i 's/'$temaActual'/OSH_THEME="'$nuevoTema'"/g' ~/.bashrc
+					;;
+				11)
+					~/.oh-my-bash/tools/uninstall.sh
+					;;
+				12)
+					break
+					;;
+			esac
+		done
+	. ~/.bashrc

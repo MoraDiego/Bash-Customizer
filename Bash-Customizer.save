@@ -1,6 +1,0 @@
-#!/bin/bashif !(git --version && curl --version;) then
-	echo "tengo git"
-	sudo apt-update
-else
-	echo "No tengo git o curl"
-fi
