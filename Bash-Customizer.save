@@ -3,10 +3,15 @@
 if ! git --version > /dev/null 2>&1; then
 	sudo apt-get install git
 fi
+if ! curl --version > /dev/null 2>&1; then
+	sudo apt get install curl
+fi
 #Instalacion de Oh My Bash
-git clone git://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash >/dev/null 2>&1
+git clone git://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
 cp ~/.bashrc ~/.bashrc.orig
 cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
+source ~/.bashrc
+echo -e "Una vez instalado Oh My Bash ejecute de nuevo el script para personalizar su terminal \nSi ya esta instalado haga caso omiso"
 #Menu de seleccion para personalziar la terminal
 	while true;
 		do
@@ -73,4 +78,4 @@ cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
 					;;
 			esac
 		done
-echo "Reinicie la terminal para ver los cambios reflejados"
+	. ~/.bashrc
